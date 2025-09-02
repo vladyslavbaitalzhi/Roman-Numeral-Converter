@@ -23,5 +23,8 @@ int main(void){
 
     putchar('\n');
 
+    // prevent console closure
+    scanf("%d", &user_number);
+
     return 0;
 }
