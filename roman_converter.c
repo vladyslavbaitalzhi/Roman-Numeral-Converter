@@ -1,30 +1,41 @@
 #include <stdio.h>
+#include <conio.h>
 
-int roman(int i, int j, char c){
-    while (i >= j){
-        putchar(c);
-        i -= j;
+int roman(int value, int number, char symbol){
+    while (value >= number){
+        putchar(symbol);
+        value -= number;
     }
+    return value;
+}
+
+void closeApp(){
+    putchar('\n');
+    printf("Press any key to exit... ");
+    getch();
 }
 
 int main(void){
-    int user_number;
-    printf("Enter number: ");
-    scanf("%d", &user_number);
+    unsigned int userInput = 0;
 
-    printf("Roman number: ");
-    user_number = roman(user_number, 1000, 'M');
-    user_number = roman(user_number, 500, 'D');
-    user_number = roman(user_number, 100, 'C');
-    user_number = roman(user_number, 50, 'L');
-    user_number = roman(user_number, 10, 'X');
-    user_number = roman(user_number, 5, 'V');
-    user_number = roman(user_number, 1, 'I');
+    printf("Arabic to Roman numeral converter\n");
+    
+    printf("Enter your number [1-3999]: ");
+    scanf("%u", &userInput);
 
-    putchar('\n');
+    if (userInput < 1 || userInput > 3999) {
+        printf("Invalid input!");
+    }
+    
+    userInput = roman(userInput, 1000, 'M');
+    userInput = roman(userInput, 500, 'D');
+    userInput = roman(userInput, 100, 'C');
+    userInput = roman(userInput, 50, 'L');
+    userInput = roman(userInput, 10, 'X');
+    userInput = roman(userInput, 5, 'V');
+    userInput = roman(userInput, 1, 'I');
 
-    // prevent console closure
-    scanf("%d", &user_number);
-
+    closeApp();
+    
     return 0;
 }
